@@ -128,25 +128,6 @@ print(classification_report(testY.argmax(axis=1), predIdxs,
 print("[INFO] saving mask detector model...")
 model.save('C:/Users/haider/Documents/Soft Computing Assignments/Face Mask Detector/mask_detector.model', save_format="h5")
 
-from keras.models import load_model
-#To test for individual images
-my_model = load_model('C:/Users/haider/Documents/Soft Computing Assignments/Face Mask Detector/mask_detector.model')
-test_image_mask = image.load_img('C:/Users/haider/Pictures/science computer/17065343_masked.jpg',target_size=(150,150,3))
-test_image_no_mask = image.load_img(r'C:/Users/haider/Pictures/science computer/17065343.jpg',
-                          target_size=(150,150,3))
-
-#Predict image with mask
-test_image_mask
-test_image_mask = image.img_to_array (test_image_mask)
-test_image_mask = np.expand_dims(test_image_mask ,axis=0)
-my_model.predict(test_image_mask)[0][0]
-
-#Predict image without mask
-test_image_no_mask 
-test_image_no_mask  = image.img_to_array (test_image_no_mask)
-test_image_no_mask  = np.expand_dims(test_image_no_mask ,axis=0)
-my_model.predict(test_image_no_mask)[0][0]
-
 # plot the training loss and accuracy
 N = EPOCHS
 plt.style.use("ggplot")
